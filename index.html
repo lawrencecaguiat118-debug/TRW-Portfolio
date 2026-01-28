@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anthony Lawrence C. Caguiat | Interactive Resume</title>
+
+<style>
+body{
+margin:0;
+background:#070708;
+color:#ffffff;
+font-family:Arial, sans-serif;
+}
+
+/* GAME */
+#gameCanvas{
+  position:fixed;
+  inset:0;
+  background:#0b0b0b;
+  z-index:9999;
+}
+
+/* RESUME HIDDEN UNTIL GAME END */
+#resume{
+  display:none;
+  padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="gameCanvas"></canvas>
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anthony Lawrence C. Caguiat | Interactive Resume</title>
+  <!-- Link to external CSS file -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+	<!-- Link to external CSS file -->
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+	<!-- Top navigation bar -->
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+	<!-- Brand/logo -->
+      <a class="brand" href="#home" aria-label="Go to top">
+        <span class="brand-dot"></span>
+        <span class="brand-text">ALC</span>
+      </a>
+
+	<!-- Desktop navigation links -->
+      <nav class="nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#awards">Awards</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+	<!-- Mobile menu button -->
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+	<!-- Mobile navigation links -->
+    <div class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#awards">Awards</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+	<!-- Main content -->
+  <main id="home" class="wrap">
+    <section class="hero">
+      <div class="hero-left">
+        <div class="mini-ico">🔴</div>
+
+	<!-- Name and subtitle -->
+        <h1>
+          Anthony Lawrence C. Caguiat
+        </h1>
+
+        <h2 class="subtitle-title">SOFTWARE / HARDWARE ENGINEER</h2>
+
+	<!-- Call-to-action buttons -->
+        <div class="cta-row">
+			<a class="btn primary" href="#contact">Contact</a>
+			<button class="btn ghost" id="copyEmailBtn" type="button">Copy email</button>
+			<a class="btn red-btn" href="Anthony_Lawrence_Resume.pdf" download>Download Resume</a>
+		</div>
+
+	<!-- Contact cards: phone, email, address, Facebook -->
+        <div class="contact-cards" id="contact">
+          <a class="card mini" href="tel:+639763124208" aria-label="Call phone">
+            <div class="mini-ico">📞</div>
+            <div class="mini-txt">
+              <div class="mini-label">Phone</div>
+            </div>
+          </a>
+
+          <button class="card mini" id="emailCard" type="button" aria-label="Copy email address">
+            <div class="mini-ico">📧</div>
+            <div class="mini-txt">
+              <div class="mini-label">Email</div>
+            </div>
+          </button>
+
+         <!-- Address card that opens Google Maps -->
+		<a class="card mini" href="https://www.google.com/maps/search/?api=1&query=565+Medicion+II-E,+Imus+City,+Cavite,+4103,+Philippines" target="_blank" rel="noopener" aria-label="Open address in Google Maps">
+			<div class="mini-ico">🏠</div>
+			<div class="mini-txt">
+				<div class="mini-label">Address</div>
+			<div class="mini-value">
+		  </div>
+		</div>
+	   </a>
+
+          <a class="card mini" href="https://www.facebook.com/lawrence.caguiat" target="_blank" rel="noopener" aria-label="Facebook profile">
+            <div class="mini-ico">f</div>
+            <div class="mini-txt">
+              <div class="mini-label">Facebook</div>
+            </div>
+          </a>
+        </div>
+	<!-- Toast notification -->
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      </div>
+
+      <div class="hero-right">
+	<!-- Profile top section -->
+       <div class="profile-card">
+		<div class="profile-top">
+		 <div class="avatar-wrap" data-open="profileModal" role="button" tabindex="0">
+		  <img src="RESUME PICTURE.png" alt="Profile photo" class="avatar-img" loading="lazy" decoding="async" onerror="this.src='RESUME PICTURE.png'"/>
+		</div>
+
+	<!-- Name and role -->
+		<div class="profile-meta">
+			<div class="profile-name">Lawrence Caguiat</div>
+			<div class="profile-role">Student | Computer Engineer</div>
+		</div>
+	  </div>
+
+          <div class="divider"></div>
+
+	<!-- Quick links to sections/modals -->
+          <div class="quick-grid">
+            <button class="quick" data-open="skillsModal" type="button">
+              <div class="quick-title">Skills</div>
+              <div class="quick-desc">Tech and personal</div>
+            </button>
+
+            <button class="quick" data-open="educationModal" type="button">
+              <div class="quick-title">Education</div>
+              <div class="quick-desc">2010 to 2027</div>
+            </button>
+
+            <button class="quick" data-open="awardsModal" type="button">
+              <div class="quick-title">Awards</div>
+              <div class="quick-desc">Courses and activities</div>
+            </button>
+
+            <button class="quick" data-open="projectsModal" type="button">
+              <div class="quick-title">Projects</div>
+              <div class="quick-desc">Hands-on</div>
+            </button>
+          </div>
+
+          <div class="divider"></div>
+          <div class="smallprint">
+          </div>
+        </div>
+      </div>
+    </section>
+
+	<!-- Quick links to sections/modals -->
+    <section id="about" class="section">
+      <div class="section-head">
+        <h2>About</h2>
+      </div>
+
+      <div class="grid-2">
+	<!-- Professional summary panel -->
+        <article class="panel">
+          <h3>Professional summary</h3>
+          <p class="paragraph-justify">
+            Highly motivated and detail-oriented individual with hands-on experience in computer literacy and web design. Skilled in diagnosing hardware and software issues, as well as creating basic 2D and 3D models. Passionate about software and hardware development, with experience in 2D and 3D design, Arduino projects, and website designs. Eager to apply technical knowledge, problem-solving abilities, and a strong work ethic to contribute to the success of a dynamic team and help achieve company goals.
+          </p>
+        </article>
+
+	<!-- Key strengths panel -->
+        <article class="panel">
+          <h3>Key strengths</h3>
+          <div class="pill-row">
+            <span class="pill">Fast learner</span>
+            <span class="pill">Adaptability</span>
+            <span class="pill">Problem solving</span>
+            <span class="pill">Time management</span>
+            <span class="pill">Collaboration</span>
+            <span class="pill">Motivation</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+	<!-- Skills section -->
+    <section id="skills" class="section">
+      <div class="section-head">
+        <h2>Skills</h2>
+      </div>
+
+      <div class="grid-3">
+	<!-- Technical skills -->
+        <button class="panel hover" data-open="skillsModal" type="button">
+          <div class="panel-kicker">Technical</div>
+          <h3>Core technical skills</h3>
+          <ul class="list">
+            <li>Computer literacy</li>
+            <li>Basic knowledge in web, HTML, CSS, JavaScript</li>
+            <li>Basic 2D drafting and 3D modeling (CAD)</li>
+          </ul>
+          <div class="panel-link">Open full list</div>
+        </button>
+
+	<!-- Tools -->
+        <button class="panel hover" data-open="toolsModal" type="button">
+          <div class="panel-kicker">Tools</div>
+          <h3>Office and productivity</h3>
+          <ul class="list">
+            <li>Word</li>
+            <li>Excel</li>
+            <li>PowerPoint</li>
+            <li>Google Docs</li>
+          </ul>
+          <div class="panel-link">Open details</div>
+        </button>
+
+	<!-- Projects -->
+        <button class="panel hover" data-open="projectsModal" type="button">
+          <div class="panel-kicker">Projects</div>
+          <h3>Hands-on experience</h3>
+          <ul class="list">
+            <li>Arduino-based projects</li>
+            <li>Basic circuit design</li>
+            <li>Basic knowledge in hardware</li>
+          </ul>
+          <div class="panel-link">Open details</div>
+        </button>
+      </div>
+    </section>
+	
+	<!-- Projects -->
+    <section id="education" class="section">
+      <div class="section-head">
+        <h2>Education</h2>
+      </div>
+
+      <div class="timeline">
+        <button class="trow" data-open="educationModal" type="button">
+          <div class="twhen">2023 to 2027</div>
+          <div class="twhat">
+            <div class="tmain">Polytechnic University of the Philippines, Parañaque</div>
+            <div class="tsub">Tertiary</div>
+          </div>
+        </button>
+
+        <button class="trow" data-open="educationModal" type="button">
+          <div class="twhen">2021 to 2023</div>
+          <div class="twhat">
+            <div class="tmain">University of Perpetual Help System Dalta</div>
+            <div class="tsub">Senior High School</div>
+          </div>
+        </button>
+
+        <button class="trow" data-open="educationModal" type="button">
+          <div class="twhen">2017 to 2021</div>
+          <div class="twhat">
+            <div class="tmain">Imus Institute of Science and Technology</div>
+            <div class="tsub">Junior High School</div>
+          </div>
+        </button>
+
+        <button class="trow" data-open="educationModal" type="button">
+          <div class="twhen">2010 to 2017</div>
+          <div class="twhat">
+            <div class="tmain">GOV D.M Camerino Elementary School</div>
+            <div class="tsub">Primary</div>
+          </div>
+        </button>
+      </div>
+    </section>
+
+	<!-- Awards section -->
+    <section id="awards" class="section">
+      <div class="section-head">
+        <h2>Awards and activities</h2>
+      </div>
+
+      <div class="grid-2">
+        <button class="panel hover" data-open="awardsModal" type="button">
+          <h3>Activities and training</h3>
+          <ul class="list">
+            <li>Beyond Formalities: Fostering Integrity and Creating Safe Spaces (2025)</li>
+            <li>Introduction to Python (2024)</li>
+            <li>The Value of Strong Workplace Ethics in the 21st Century (2023)</li>
+            <li>Project TECH (2020)</li>
+            <li>Training in Creative Animation (2020)</li>
+            <li>Training in Tilamsik at Guhit (2024)</li>
+          </ul>
+        </button>
+
+        <div class="panel">
+          <h3>Notes</h3>
+          <p>
+            This section is for future awards or certifications.
+          </p>
+        </div>
+      </div>
+    </section>
+
+	<!-- Footer -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Anthony Lawrence C. Caguiat</div>
+        <div class="footer-links">
+          <a href="#home">Top</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <div class="modal" id="skillsModal" aria-hidden="true" role="dialog" aria-label="Skills">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div class="modal-title">Skills</div>
+        <button class="icon-btn" data-close type="button" aria-label="Close">×</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-grid">
+          <div class="modal-panel">
+            <div class="modal-kicker">Personal</div>
+            <ul class="list">
+              <li>Fast learner</li>
+              <li>Adaptability</li>
+              <li>Problem solving</li>
+              <li>Time management</li>
+              <li>Collaboration</li>
+              <li>Motivation</li>
+            </ul>
+          </div>
+
+          <div class="modal-panel">
+            <div class="modal-kicker">Technical</div>
+            <ul class="list">
+              <li>Computer literacy</li>
+              <li>Basic knowledge in web, HTML, CSS, JavaScript</li>
+              <li>Basic 2D drafting and 3D modeling (CAD)</li>
+              <li>Arduino-based projects</li>
+              <li>Basic circuit design</li>
+              <li>Basic knowledge in hardware</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="toolsModal" aria-hidden="true" role="dialog" aria-label="Tools">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div class="modal-title">Office apps</div>
+        <button class="icon-btn" data-close type="button" aria-label="Close">×</button>
+      </div>
+
+      <div class="modal-body">
+        <ul class="list">
+          <li>Word</li>
+          <li>Excel</li>
+          <li>PowerPoint</li>
+          <li>Google Docs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="projectsModal" aria-hidden="true" role="dialog" aria-label="Projects">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div class="modal-title">Hands-on experience</div>
+        <button class="icon-btn" data-close type="button" aria-label="Close">×</button>
+      </div>
+
+      <div class="modal-body">
+        <ul class="list">
+          <li>Arduino-based projects</li>
+          <li>Basic circuit design</li>
+          <li>Basic knowledge in hardware</li>
+          <li>Website designs</li>
+          <li>2D and 3D design drafts</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="educationModal" aria-hidden="true" role="dialog" aria-label="Education">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div class="modal-title">Education</div>
+        <button class="icon-btn" data-close type="button" aria-label="Close">×</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="timeline mini">
+          <div class="trow static">
+            <div class="twhen">2023 to 2027</div>
+            <div class="twhat">
+              <div class="tmain">Polytechnic University of the Philippines, Parañaque</div>
+              <div class="tsub">Tertiary</div>
+            </div>
+          </div>
+          <div class="trow static">
+            <div class="twhen">2021 to 2023</div>
+            <div class="twhat">
+              <div class="tmain">University of Perpetual Help System Dalta</div>
+              <div class="tsub">Senior High School</div>
+            </div>
+          </div>
+          <div class="trow static">
+            <div class="twhen">2017 to 2021</div>
+            <div class="twhat">
+              <div class="tmain">Imus Institute of Science and Technology</div>
+              <div class="tsub">Junior High School</div>
+            </div>
+          </div>
+          <div class="trow static">
+            <div class="twhen">2010 to 2017</div>
+            <div class="twhat">
+              <div class="tmain">GOV D.M Camerino Elementary School</div>
+              <div class="tsub">Primary</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="awardsModal" aria-hidden="true" role="dialog" aria-label="Awards and activities">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div class="modal-title">Awards and activities</div>
+        <button class="icon-btn" data-close type="button" aria-label="Close">×</button>
+      </div>
+				
+      <div class="modal-body">
+        <div class="modal-panel">
+          <div class="modal-kicker">Courses and training</div>
+          <ul class="list">
+            <li>Beyond Formalities: Fostering Integrity and Creating Safe Spaces (2025)</li>
+            <li>Introduction to Python (2024)</li>
+            <li>The Value of Strong Workplace Ethics in the 21st Century (2023)</li>
+            <li>Project TECH (2020)</li>
+            <li>Training in Creative Animation (2020)</li>
+            <li>Training in Tilamsik at Guhit (2024)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+	  <div class="modal" id="profileModal" aria-hidden="true" role="dialog" aria-label="Profile image">
+		<div class="modal-card profile-modal">
+			<button class="icon-btn" data-close type="button" aria-label="Close">×</button>
+			<img src="RESUME PICTURE.png" alt="Profile large view" class="profile-large">
+		</div> 
+	</div>
+	<!-- JavaScript for menu, modals, copy email, toast -->
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileNav = document.getElementById("mobileNav");
+
+    const toast = document.getElementById("toast");
+	// Show toast notifications
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => toast.classList.remove("show"), 1800);
+    }
+	// Copy text to clipboard
+    function copyText(txt) {
+      navigator.clipboard.writeText(txt).then(() => showToast("Copied"));
+    }
+	// Copy text to clipboard
+    menuBtn.addEventListener("click", () => {
+      const isOpen = mobileNav.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    mobileNav.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => {
+        mobileNav.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+	// Copy email button functionality
+    const copyEmailBtn = document.getElementById("copyEmailBtn");
+    const emailCard = document.getElementById("emailCard");
+
+    const email = "lawrencecaguiat118@gmail.com";
+
+    copyEmailBtn.addEventListener("click", () => copyText(email));
+    emailCard.addEventListener("click", () => copyText(email));
+	// Modals open/close
+    const modals = document.querySelectorAll(".modal");
+
+    function openModal(id) {
+      const m = document.getElementById(id);
+      if (!m) return;
+      m.classList.add("open");
+      m.setAttribute("aria-hidden", "false");
+      document.body.classList.add("lock");
+    }
+
+    function closeModal(m) {
+      m.classList.remove("open");
+      m.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("lock");
+    }
+
+    document.querySelectorAll("[data-open]").forEach(btn => {
+      btn.addEventListener("click", () => openModal(btn.getAttribute("data-open")));
+    });
+
+    document.querySelectorAll("[data-close]").forEach(btn => {
+      btn.addEventListener("click", () => closeModal(btn.closest(".modal")));
+    });
+
+    modals.forEach(m => {
+      m.addEventListener("click", (e) => {
+        if (e.target === m) closeModal(m);
+      });
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      const open = document.querySelector(".modal.open");
+      if (open) closeModal(open);
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", () => {
+        const open = document.querySelector(".modal.open");
+        if (open) closeModal(open);
+      });
+    });
+  </script>
+
+<script>
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const tileSize = 64;
+const rows = Math.floor(canvas.height / tileSize);
+const cols = Math.floor(canvas.width / tileSize);
+
+// Maze generation: border + random walls
+const maze = [];
+for (let r = 0; r < rows; r++) {
+  maze[r] = [];
+  for (let c = 0; c < cols; c++) {
+    if (r === 0 || r === rows - 1 || c === 0 || c === cols - 1) {
+      maze[r][c] = 1; // border walls
+    } else if (Math.random() < 0.15) {
+      maze[r][c] = 1; // inner walls
+    } else {
+      maze[r][c] = 0; // empty space
+    }
+  }
+}
+
+// Ensure start and portal are clear
+maze[1][1] = 0;
+maze[rows - 2][cols - 2] = 0;
+
+const player = {
+  x: tileSize + 8,
+  y: tileSize + 8,
+  size: tileSize / 2,
+  speed: 4
+};
+
+const portal = {
+  x: (cols - 2) * tileSize + 8,
+  y: (rows - 2) * tileSize + 8,
+  w: tileSize - 16,
+  h: tileSize - 16
+};
+
+let keys = {};
+let enteringPortal = false;
+let portalTimer = 0;
+
+window.addEventListener("keydown", e => keys[e.key.toLowerCase()] = true);
+window.addEventListener("keyup", e => keys[e.key.toLowerCase()] = false);
+
+// Check if the player can move to (x,y)
+function canMove(x, y) {
+  const corners = [
+    [x, y],
+    [x + player.size, y],
+    [x, y + player.size],
+    [x + player.size, y + player.size]
+  ];
+  return corners.every(([px, py]) => {
+    const r = Math.floor(py / tileSize);
+    const c = Math.floor(px / tileSize);
+    return maze[r] && maze[r][c] === 0;
+  });
+}
+
+function update() {
+  if(keys["w"] && canMove(player.x, player.y - player.speed)) player.y -= player.speed;
+  if(keys["s"] && canMove(player.x, player.y + player.speed)) player.y += player.speed;
+  if(keys["a"] && canMove(player.x - player.speed, player.y)) player.x -= player.speed;
+  if(keys["d"] && canMove(player.x + player.speed, player.y)) player.x += player.speed;
+
+  // Portal collision
+  if (
+    player.x < portal.x + portal.w &&
+    player.x + player.size > portal.x &&
+    player.y < portal.y + portal.h &&
+    player.y + player.size > portal.y
+  ) {
+    enteringPortal = true;
+  }
+
+  if(enteringPortal){
+    portalTimer += 1;
+    if(portalTimer > 20){
+      endGame();
+    }
+  }
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Draw maze walls
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (maze[r][c] === 1) {
+        ctx.fillStyle = "#ff0000";
+        ctx.fillRect(c * tileSize, r * tileSize, tileSize, tileSize);
+      }
+    }
+  }
+
+  // Draw portal
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(portal.x, portal.y, portal.w, portal.h);
+
+  // Draw player
+  ctx.fillStyle = "#00ff00";
+  ctx.fillRect(player.x, player.y, player.size, player.size);
+}
+
+function loop() {
+  update();
+  draw();
+  requestAnimationFrame(loop);
+}
+
+// Hide game and show resume
+function endGame() {
+  document.getElementById("gameCanvas").style.display = "none";
+  document.querySelector("main").style.display = "block";
+}
+
+loop();
+
+</script>
+
+</body>
+</html>
